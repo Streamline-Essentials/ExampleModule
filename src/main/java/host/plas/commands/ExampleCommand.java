@@ -19,8 +19,8 @@ public class ExampleCommand extends ModuleCommand {
     @Override
     public void run(StreamlineUser streamlineUser, String[] strings) {
         streamlineUser.sendMessage(ModuleUtils.codedString("&bHello world!")); // Send a message to the user.
-        streamlineUser.sendMessage(ModuleUtils.codedString(ModuleUtils.replacePlaceholders("&bPlaceholder 1: &a%example_arg1%"))); // Can also parse placeholders.
-        streamlineUser.sendMessage(ModuleUtils.codedString(ModuleUtils.replacePlaceholders("&bPlaceholder 2: &a%example_arg2_anythingcangohere%"))); // Advanced placeholders.
+        streamlineUser.sendMessage(ModuleUtils.codedString(ModuleUtils.replacePlaceholders(streamlineUser, "&bPlaceholder 1: &a%example_arg1%"))); // Can also parse placeholders.
+        streamlineUser.sendMessage(ModuleUtils.codedString(ModuleUtils.replacePlaceholders(streamlineUser, "&bPlaceholder 2: &a%example_arg2_anythingcangohere%"))); // Advanced placeholders.
     }
 
     @Override

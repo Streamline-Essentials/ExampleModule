@@ -4,25 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09ffe75c-01fe-4feb-9dae-9fd3bdebfc53" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/ExampleModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/commands/ExampleCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/configs/ExampleConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/events/ExampleListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/events/own/ExampleEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/ratapi/ExampleExpansion.java" afterDir="false" />
+    <list default="true" id="09ffe75c-01fe-4feb-9dae-9fd3bdebfc53" name="Changes" comment="Init.">
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/commands/ExampleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/commands/ExampleCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,11 +85,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1693567718873</updated>
-      <workItem from="1693567720946" duration="2413000" />
+      <workItem from="1693567720946" duration="2782000" />
     </task>
+    <task id="LOCAL-00001" summary="Init.">
+      <option name="closed" value="true" />
+      <created>1693570214326</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1693570214326</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Init." />
+    <option name="LAST_COMMIT_MESSAGE" value="Init." />
   </component>
 </project>
