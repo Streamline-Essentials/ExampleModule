@@ -1,0 +1,49 @@
+plugins {
+    id("java")
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+}
+
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+group = 'com.github.streamline-essentials'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+    maven { url = 'https://jitpack.io' }
+}
+
+dependencies {
+    compileOnly "net.luckperms:api:5.4"
+
+    compileOnly("com.github.Streamline-Essentials.StreamlineCore:StreamlineCore-API:main-SNAPSHOT")
+    annotationProcessor("com.github.Streamline-Essentials.StreamlineCore:StreamlineCore-API:main-SNAPSHOT")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+shadowJar {
+    manifest {
+        attributes 'Plugin-Class': 'host.plas.ExampleModule' // Change this to your main class.
+        attributes 'Plugin-Id': 'example-module' // Change this to your module id.
+        attributes 'Plugin-Version': version
+        attributes 'Plugin-Requires': '' // Change this to your module requirements. (Only put other modules here.)
+        attributes 'Plugin-Dependencies': '' // Change this to your module dependencies. (Only put other modules here.)
+        attributes 'Plugin-Description': 'Example Module for StreamlineCore.' // Change this to your module description.
+        attributes 'Plugin-Provider': 'Drakified' // Change this to your name.
+        attributes 'Plugin-License': 'Apache License 2.0'
+    }
+
+//    archiveFileName = "$archiveBaseName-$archiveVersion.$archiveExtension"
+    archiveName = "$baseName-$version.$extension"
+}
+
+artifacts {
+    archives shadowJar
+}
