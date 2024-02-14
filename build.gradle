@@ -1,13 +1,10 @@
 plugins {
-    id("java")
-    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-apply plugin: 'java'
-apply plugin: 'com.github.johnrengelman.shadow'
-
-group = 'com.github.streamline-essentials'
-version = '1.0.0'
+group rootProject.properties['group']
+version rootProject.properties['version']
 
 repositories {
     mavenCentral()
@@ -17,10 +14,22 @@ repositories {
 }
 
 dependencies {
-    compileOnly "net.luckperms:api:5.4"
+    // The Base
+    compileOnly 'com.github.server-utilities:TheBase:master-SNAPSHOT'
+    annotationProcessor 'com.github.server-utilities:TheBase:master-SNAPSHOT'
 
-    compileOnly("com.github.Streamline-Essentials.StreamlineCore:StreamlineCore-API:main-SNAPSHOT")
-    annotationProcessor("com.github.Streamline-Essentials.StreamlineCore:StreamlineCore-API:main-SNAPSHOT")
+    // LuckPerms
+    compileOnly 'net.luckperms:api:5.4'
+
+    // StreamlineCore
+    boolean includeBapi = rootProject.properties['include-bapi'].toString().toBoolean()
+    if (includeBapi) {
+        compileOnly 'com.github.streamline-essentials.StreamlineCore:StreamlineCore-BAPI:main-SNAPSHOT'
+        annotationProcessor 'com.github.streamline-essentials.StreamlineCore:StreamlineCore-BAPI:main-SNAPSHOT'
+    } else {
+        compileOnly 'com.github.streamline-essentials.StreamlineCore:StreamlineCore-API:main-SNAPSHOT'
+        annotationProcessor 'com.github.streamline-essentials.StreamlineCore:StreamlineCore-API:main-SNAPSHOT'
+    }
 }
 
 java {
@@ -30,20 +39,24 @@ java {
 
 shadowJar {
     manifest {
-        attributes 'Plugin-Class': 'host.plas.ExampleModule' // Change this to your main class.
-        attributes 'Plugin-Id': 'example-module' // Change this to your module id.
-        attributes 'Plugin-Version': version
-        attributes 'Plugin-Requires': '' // Change this to your module requirements. (Only put other modules here.)
-        attributes 'Plugin-Dependencies': '' // Change this to your module dependencies. (Only put other modules here.)
-        attributes 'Plugin-Description': 'Example Module for StreamlineCore.' // Change this to your module description.
-        attributes 'Plugin-Provider': 'Drakified' // Change this to your name.
-        attributes 'Plugin-License': 'Apache License 2.0'
+        attributes 'Plugin-Class': rootProject.properties['class'].toString() + '.' + rootProject.name.toString()
+        attributes 'Plugin-Id': rootProject.properties['id']
+        attributes 'Plugin-Version': rootProject.version
+        attributes 'Plugin-Requires': rootProject.properties['requires']
+        attributes 'Plugin-Dependencies': rootProject.properties['dependencies']
+        attributes 'Plugin-Description': rootProject.properties['description']
+        attributes 'Plugin-Provider': rootProject.properties['provider']
+        attributes 'Plugin-License': rootProject.properties['license']
     }
 
-//    archiveFileName = "$archiveBaseName-$archiveVersion.$archiveExtension"
-    archiveName = "$baseName-$version.$extension"
+    setArchiveFileName(archiveBaseName.get() + '-' + archiveVersion.get() + '.' + archiveExtension.get())
 }
 
 artifacts {
     archives shadowJar
+}
+
+wrapper {
+    gradleVersion = '8.6'
+    distributionType = Wrapper.DistributionType.BIN
 }

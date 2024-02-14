@@ -1,2 +1,2 @@
-rootProject.name = 'ExampleModule'
+rootProject.name = properties['name']
 
